@@ -5,8 +5,8 @@ public class HelloWorld {
 
     System.out.println("Hello, World!");
 
-    double len1 = distance(new Point(2, 3), new Point(5, 6));
-    Distance s = new Distance(new Point(5, 6), new Point(10, 12));
+    double len1 = distance(new Point(0, 0), new Point(5, 5));
+    Distance s = new Distance(new Point(2, 2), new Point(6, 8));
     double len2 = s.distance();
     System.out.println("Расстояние между точками равно " + len1);
     System.out.println("Расстояние между точками равно " + len2);
