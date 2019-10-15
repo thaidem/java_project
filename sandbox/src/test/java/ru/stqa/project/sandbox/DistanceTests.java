@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class DistanceTests {
 
   @Test
-  public void testDistance() {
+  public void testArea() {
     Distance s = new Distance(new Point(2, 2), new Point(5, 6));
     Assert.assertEquals(s.distance(),5);
     Distance s1 = new Distance(new Point(5, 6), new Point(10, 12));
