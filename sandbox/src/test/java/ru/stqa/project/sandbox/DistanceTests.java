@@ -7,11 +7,13 @@ public class DistanceTests {
 
   @Test
   public void testArea() {
-    Distance s = new Distance(new Point(2, 2), new Point(5, 6));
-    Assert.assertEquals(s.distance(),5);
-    Distance s1 = new Distance(new Point(5, 6), new Point(10, 12));
-    Assert.assertEquals(s1.distance(),7.810249675906654);
-    Distance s2 = new Distance(new Point(0, 0), new Point(5, 5));
-    Assert.assertEquals(s2.distance(),7.0710678118654755);
+
+    Point p1 = new Point(2, 2);
+    Assert.assertEquals(p1.distance(new Point(5, 6)),5);
+    Point p2 = new Point(5, 6);
+    Assert.assertEquals(p2.distance(new Point(10, 12)),7.810249675906654);
+    Point p3 = new Point(0, 0);
+    Assert.assertEquals(p3.distance(new Point(5, 5)),7.0710678118654755);
+
   }
 }
