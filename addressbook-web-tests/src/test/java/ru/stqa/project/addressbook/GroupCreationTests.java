@@ -11,7 +11,7 @@ public class GroupCreationTests {
 
 
   @BeforeMethod
-  public void setUp() {
+  public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     gotoHomePage();
@@ -60,7 +60,7 @@ public class GroupCreationTests {
   }
 
   @AfterMethod
-  public void tearDown() {
+  public void tearDown() throws Exception {
     wd.quit();
   }
 

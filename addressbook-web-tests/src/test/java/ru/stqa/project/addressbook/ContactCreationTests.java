@@ -11,7 +11,7 @@ public class ContactCreationTests {
 
 
   @BeforeMethod
-  public void setUp() {
+  public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     gotoHomePage();
@@ -54,7 +54,7 @@ public class ContactCreationTests {
 
 
   @AfterMethod
-  public void tearDown() {
+  public void tearDown() throws Exception {
     wd.quit();
   }
 
