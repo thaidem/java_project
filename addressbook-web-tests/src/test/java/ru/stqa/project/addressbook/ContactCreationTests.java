@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class GroupCreationTests {
+public class ContactCreationTests {
   private WebDriver wd;
 
 
@@ -29,35 +29,29 @@ public class GroupCreationTests {
   }
 
   @Test
-  public void testGroupCreation() {
-    gotoGroupPage();
-    initGroupCreation();
-    fillGroupForm(new GroupData("test1", "test2", "test3"));
-    submitGroupCreation();
-    returnToGroupPage();
+  public void testContactCreation() {
+    initContactCreation();
+    fillContactForm(new ContactData("John", "Lennon", "NY, Dacota", "1-212-123 45 67", "jl@gmail.com"));
+    submitContactCreation();
+    gotoHomePage();
   }
 
-  private void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
-  }
-
-  private void submitGroupCreation() {
+  private void submitContactCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
-  private void fillGroupForm(GroupData groupData) {
-    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
+  private void fillContactForm(ContactData contactData) {
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+    wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
+    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
 
-  private void initGroupCreation() {
-    wd.findElement(By.name("new")).click();
+  private void initContactCreation() {
+    wd.findElement(By.linkText("add new")).click();
   }
 
-  private void gotoGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
-  }
 
   @AfterMethod
   public void tearDown() {
