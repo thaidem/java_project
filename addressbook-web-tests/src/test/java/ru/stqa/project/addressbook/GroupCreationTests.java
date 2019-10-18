@@ -14,12 +14,8 @@ public class GroupCreationTests {
   public void setUp() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    gotoHomePage();
-    login("admin", "secret");
-  }
-
-  private void gotoHomePage() {
     wd.get("http://localhost/addressbook/");
+    login("admin", "secret");
   }
 
   private void login(String username, String password) {
@@ -35,6 +31,11 @@ public class GroupCreationTests {
     fillGroupForm(new GroupData("test1", "test2", "test3"));
     submitGroupCreation();
     returnToGroupPage();
+    Logout();
+  }
+
+  private void Logout() {
+    wd.findElement(By.linkText("Logout")).click();
   }
 
   private void returnToGroupPage() {
