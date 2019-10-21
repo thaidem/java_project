@@ -1,10 +1,7 @@
 package ru.stqa.project.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.project.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,15 +27,6 @@ public class ApplicationManager {
 
   public void stop() {
     wd.quit();
-  }
-
-  private boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
   }
 
   public GroupHelper getGroupHelper() {
