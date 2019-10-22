@@ -5,6 +5,7 @@ import ru.stqa.project.addressbook.model.GroupData;
 
 public class GroupModificationTests extends TestBase {
 
+
   @Test
   public void testGroupModification() {
     app.getNavigationHelper().gotoGroupPage();
