@@ -6,6 +6,7 @@ import ru.stqa.project.addressbook.model.GroupData;
 
 public class GroupHelper extends BaseHelper {
 
+
   public GroupHelper(WebDriver wd) {
     super(wd);
 
@@ -39,5 +40,17 @@ public class GroupHelper extends BaseHelper {
 
   public void submitGroupModification() {
     click(By.name("update"));
+  }
+
+  public void createGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    NavigationHelper nv = new NavigationHelper(wd);
+    nv.gotoGroupPage();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
