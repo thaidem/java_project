@@ -31,10 +31,10 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    groupHelper = new GroupHelper(wd);
-    contactHelper = new ContactHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
+    groupHelper = new GroupHelper(this);
+    contactHelper = new ContactHelper(this);
+    navigationHelper = new NavigationHelper(this);
+    sessionHelper = new SessionHelper(this);
     navigationHelper.gotoHomePage();
     getSessionHelper().login("admin", "secret");
   }

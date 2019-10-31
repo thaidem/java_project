@@ -1,17 +1,14 @@
 package ru.stqa.project.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.project.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
 
-
-  public ContactHelper(WebDriver wd) {
-    super(wd);
+  public ContactHelper(ApplicationManager app) {
+    super(app);
   }
 
   public void submitContactCreation() {
@@ -57,8 +54,7 @@ public class ContactHelper extends BaseHelper {
     initContactCreation();
     fillContactForm(contact, creation);
     submitContactCreation();
-    NavigationHelper nv = new NavigationHelper(wd);
-    nv.gotoHomePage();
+    app.getNavigationHelper().gotoHomePage();
   }
 
   public boolean isThereAContact() {

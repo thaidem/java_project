@@ -7,9 +7,11 @@ import org.openqa.selenium.WebDriver;
 
 public class BaseHelper {
   protected WebDriver wd;
+  public ApplicationManager app;
 
-  public BaseHelper(WebDriver wd) {
-    this.wd = wd;
+  public BaseHelper(ApplicationManager app) {
+    this.app = app;
+    this.wd = app.wd;
   }
 
   protected void click(By locator) {

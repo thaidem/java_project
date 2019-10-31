@@ -1,15 +1,12 @@
 package ru.stqa.project.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import ru.stqa.project.addressbook.model.GroupData;
 
 public class GroupHelper extends BaseHelper {
 
-
-  public GroupHelper(WebDriver wd) {
-    super(wd);
-
+  public GroupHelper(ApplicationManager app) {
+    super(app);
   }
 
    public void submitGroupCreation() {
@@ -46,8 +43,7 @@ public class GroupHelper extends BaseHelper {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
-    NavigationHelper nv = new NavigationHelper(wd);
-    nv.gotoGroupPage();
+    app.getNavigationHelper().gotoGroupPage();
   }
 
   public boolean isThereAGroup() {
