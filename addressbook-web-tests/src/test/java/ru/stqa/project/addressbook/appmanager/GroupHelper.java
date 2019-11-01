@@ -1,6 +1,5 @@
 package ru.stqa.project.addressbook.appmanager;
 
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ru.stqa.project.addressbook.model.GroupData;
