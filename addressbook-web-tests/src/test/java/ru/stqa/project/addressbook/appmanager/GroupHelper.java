@@ -50,6 +50,14 @@ public class GroupHelper extends BaseHelper {
     app.getNavigationHelper().gotoGroupPage();
   }
 
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    app.getNavigationHelper().gotoGroupPage();
+  }
+
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
