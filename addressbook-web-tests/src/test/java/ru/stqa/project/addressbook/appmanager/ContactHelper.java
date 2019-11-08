@@ -58,7 +58,7 @@ public class ContactHelper extends BaseHelper {
     initContactCreation();
     fillContactForm(contact, creation);
     submitContactCreation();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().HomePage();
   }
 
   public boolean isThereAContact() {

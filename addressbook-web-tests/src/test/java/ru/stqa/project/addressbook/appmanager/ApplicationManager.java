@@ -35,7 +35,7 @@ public class ApplicationManager {
     contactHelper = new ContactHelper(this);
     navigationHelper = new NavigationHelper(this);
     sessionHelper = new SessionHelper(this);
-    navigationHelper.gotoHomePage();
+    navigationHelper.HomePage();
     getSessionHelper().login("admin", "secret");
   }
 
@@ -43,7 +43,7 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
@@ -51,7 +51,7 @@ public class ApplicationManager {
     return contactHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 
