@@ -22,12 +22,12 @@ public class GroupModificationTests extends TestBase {
   @Test(enabled = false)
   public void testGroupModification() {
     Groups before = app.group().all();
-    GroupData modifyGroup = before.iterator().next();
+    GroupData modifiedGroup = before.iterator().next();
     GroupData group = new GroupData()
-            .withId(modifyGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
+            .withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
     app.group().modify(group);
     Groups after = app.group().all();
     assertEquals(after.size(), before.size());
-    assertThat(after, equalTo(before.without(modifyGroup).withAdded(group)));
+    assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
   }
 }
