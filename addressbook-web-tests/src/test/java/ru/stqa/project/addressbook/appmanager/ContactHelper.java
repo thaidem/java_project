@@ -41,17 +41,32 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.cssSelector("input[value='"+ id +"']")).click();
   }
 
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    app.goTo().HomePage();
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+  }
+
   public void initContactModification(int index) {
     wd.findElements(By.xpath("//img[@title='Edit']")).get(index).click();
   }
 
   public void initContactModificationById(int id) {
-    WebElement checkbox = wd.findElement(By.cssSelector("input[value='"+ id +"']"));
-//    WebElement cell = checkbox.findElement(By.xpath("//following-sibling::td[7] "));
-//    cell.findElement(By.tagName("a")).click();
-    WebElement row = checkbox.findElement(By.xpath("./../.."));
-    List<WebElement> cells = row.findElements(By.tagName("td"));
-    cells.get(7).findElement(By.tagName("a")).click();
+    wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
+
+//    wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
+//    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
+//    WebElement checkbox = wd.findElement(By.cssSelector("input[value='"+ id +"']"));
+//    WebElement row = checkbox.findElement(By.xpath("./../.."));
+//    List<WebElement> cells = row.findElements(By.tagName("td"));
+//    cells.get(7).findElement(By.tagName("a")).click();
   }
 
   public void updateContactModification() {

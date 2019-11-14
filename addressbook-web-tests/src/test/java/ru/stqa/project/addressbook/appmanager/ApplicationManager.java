@@ -36,7 +36,7 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(this);
     sessionHelper = new SessionHelper(this);
     navigationHelper.HomePage();
-    getSessionHelper().login("admin", "secret");
+    session().login("admin", "secret");
   }
 
   public void stop() {
@@ -47,15 +47,13 @@ public class ApplicationManager {
     return groupHelper;
   }
 
-  public ContactHelper contact() {
-    return contactHelper;
-  }
+  public ContactHelper contact() { return contactHelper; }
 
   public NavigationHelper goTo() {
     return navigationHelper;
   }
 
-  public SessionHelper getSessionHelper() {
+  public SessionHelper session() {
     return sessionHelper;
   }
 }
