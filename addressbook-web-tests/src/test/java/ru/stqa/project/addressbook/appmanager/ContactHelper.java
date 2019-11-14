@@ -52,7 +52,7 @@ public class ContactHelper extends BaseHelper {
     String email = wd.findElement(By.name("email")).getAttribute("value");
     app.goTo().HomePage();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address).withEmail(email);
   }
 
   public void initContactModification(int index) {
@@ -127,7 +127,8 @@ public class ContactHelper extends BaseHelper {
       String email = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allPhones));
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withAllPhones(allPhones).withAddress(address).withEmail(email));
     }
     return new Contacts(contactCache);
   }
