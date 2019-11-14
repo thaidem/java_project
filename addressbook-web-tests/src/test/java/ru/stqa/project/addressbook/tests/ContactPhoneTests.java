@@ -18,6 +18,8 @@ public class ContactPhoneTests extends TestBase {
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+    assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+    assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
   }
 
   private String mergePhones(ContactData contact) {
@@ -27,7 +29,7 @@ public class ContactPhoneTests extends TestBase {
             .collect(Collectors.joining("\n"));
     }
 
-  public static String cleaned(String phone) {
-    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+  public static String cleaned(String str) {
+    return str.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 }
