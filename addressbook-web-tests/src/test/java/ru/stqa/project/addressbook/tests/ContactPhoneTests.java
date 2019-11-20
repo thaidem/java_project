@@ -19,7 +19,7 @@ public class ContactPhoneTests extends TestBase {
 
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
     assertThat(cleaned(contact.getAddress()), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
-    assertThat(cleaned(contact.getEmail()), equalTo(cleaned(contactInfoFromEditForm.getEmail())));
+    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
   }
 
   private String mergePhones(ContactData contact) {
@@ -28,6 +28,13 @@ public class ContactPhoneTests extends TestBase {
             .map(ContactPhoneTests::cleaned)
             .collect(Collectors.joining("\n"));
     }
+
+  private String mergeEmails(ContactData contact) {
+    return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+            .stream().filter((s) -> ! s.equals(""))
+            .map(ContactPhoneTests::cleaned)
+            .collect(Collectors.joining("\n"));
+  }
 
   public static String cleaned(String str) {
     return str.replaceAll("\\s+", "").replaceAll("[-()]", "");
