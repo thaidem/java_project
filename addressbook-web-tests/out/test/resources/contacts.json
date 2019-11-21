@@ -4,20 +4,23 @@
     "lastname": "Lastname 0",
     "address": "Address 0",
     "mobilePhone": "+1(112)234567890",
-    "email": "email0@gmail.com"
+    "email": "email0@gmail.com",
+    "group": "test1"
   },
   {
     "firstname": "Firstname 1",
     "lastname": "Lastname 1",
     "address": "Address 1",
     "mobilePhone": "+1(112)234567891",
-    "email": "email1@gmail.com"
+    "email": "email1@gmail.com",
+    "group": "test1"
   },
   {
     "firstname": "Firstname 2",
     "lastname": "Lastname 2",
     "address": "Address 2",
     "mobilePhone": "+1(112)234567892",
-    "email": "email2@gmail.com"
+    "email": "email2@gmail.com",
+    "group": "test1"
   }
 ]
