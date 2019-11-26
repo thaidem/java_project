@@ -2,6 +2,8 @@ package ru.stqa.project.addressbook.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.project.addressbook.model.ContactData;
@@ -19,6 +21,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
+
+//  Logger logger = LoggerFactory.getLogger(ContactCreationTests.class);
 
   @DataProvider
   public Iterator<Object[]> validContactsFromJson() throws IOException {
