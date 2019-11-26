@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
 
   public WebDriver wd;
-  public final Properties properties;
+  private final Properties properties;
 
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
