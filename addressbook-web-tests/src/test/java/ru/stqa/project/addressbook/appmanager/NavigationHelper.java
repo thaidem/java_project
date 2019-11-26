@@ -12,8 +12,8 @@ public class NavigationHelper extends BaseHelper {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
-    wd.get("http://localhost/addressbook/");
-  }
+    click(By.linkText("home"));
+   }
 
   public void groupPage() {
     if (isElementPresent(By.tagName("h1")) && wd.findElement(By.tagName("h1")).getText().equals("Groups")

@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
 
   public WebDriver wd;
-  private final Properties properties;
+  public final Properties properties;
 
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
@@ -39,12 +39,13 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
-    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    wd.get(properties.getProperty("web.baseUrl"));
     groupHelper = new GroupHelper(this);
     contactHelper = new ContactHelper(this);
     navigationHelper = new NavigationHelper(this);
     sessionHelper = new SessionHelper(this);
-    navigationHelper.HomePage();
+//    navigationHelper.HomePage();
     session().login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPass"));
   }
 
@@ -65,4 +66,6 @@ public class ApplicationManager {
   public SessionHelper session() {
     return sessionHelper;
   }
+
+  public Properties getProperties() { return properties; }
 }
