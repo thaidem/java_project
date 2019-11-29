@@ -91,4 +91,9 @@ public class GroupHelper extends BaseHelper {
     return new Groups(groupCache);
   }
 
+  public void deleteNullFromData(GroupData group) {
+    if (group.getName()== null) {group.withName("");}
+    if (group.getHeader()== null) {group.withHeader("");}
+    if (group.getFooter()== null) {group.withFooter("");}
+  }
 }

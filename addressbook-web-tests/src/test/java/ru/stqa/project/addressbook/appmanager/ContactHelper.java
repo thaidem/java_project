@@ -24,9 +24,13 @@ public class ContactHelper extends BaseHelper {
     type(By.name("lastname"), contactData.getLastname());
     attach(By.name("photo"), contactData.getPhoto());
     type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getEmail());
-
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
+    
     if(creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -137,4 +141,15 @@ public class ContactHelper extends BaseHelper {
     return new Contacts(contactCache);
   }
 
+  public void deleteNullFromData(ContactData contact) {
+    if (contact.getFirstname()== null) {contact.withFirstname("");}
+    if (contact.getLastname()== null) {contact.withLastname("");}
+    if (contact.getAddress()== null) {contact.withAddress("");}
+    if (contact.getHomePhone()== null) {contact.withHomePhone("");}
+    if (contact.getMobilePhone()== null) {contact.withMobilePhone("");}
+    if (contact.getWorkPhone()== null) {contact.withWorkPhone("");}
+    if (contact.getEmail()== null) {contact.withEmail("");}
+    if (contact.getEmail2()== null) {contact.withEmail2("");}
+    if (contact.getEmail3()== null) {contact.withEmail3("");}
+  }
 }
