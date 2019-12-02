@@ -9,19 +9,23 @@ dependencies {
     implementation 'org.testng:testng:7.0.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-3'
     implementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'org.apache.httpcomponents:httpclient-win:4.5.10'
+    compile 'commons-net:commons-net:3.4'
+    compile 'org.subethamail:subethasmtp:3.1.7'
+    compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
 }
 
 test {
     useTestNG {
-        suites 'src/test/resources/testng.xml'
-    }
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-    if (project.hasProperty('target')) {
-        systemProperty 'target', "${target}"
-    }
-    if (project.hasProperty('verifyUI')) {
-        systemProperty 'verifyUI', "${verifyUI}"
+//        suites 'src/test/resources/testng.xml'
+//    }
+//    if (project.hasProperty('browser')) {
+//        systemProperty 'browser', "${browser}"
+//    }
+//    if (project.hasProperty('target')) {
+//        systemProperty 'target', "${target}"
+//    }
+//    if (project.hasProperty('verifyUI')) {
+//        systemProperty 'verifyUI', "${verifyUI}"
     }
 }
