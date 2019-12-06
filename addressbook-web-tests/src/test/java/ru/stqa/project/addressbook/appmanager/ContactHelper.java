@@ -32,7 +32,11 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email3"), contactData.getEmail3());
     
     if(creation) {
-//      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0) {
+//        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -57,7 +61,7 @@ public class ContactHelper extends BaseHelper {
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
-    app.goTo().HomePage();
+    app.goTo().homePage();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
             .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address)
             .withEmail(email).withEmail2(email2).withEmail3(email3);
@@ -92,7 +96,7 @@ public class ContactHelper extends BaseHelper {
     selectContactById(contact.getId());
     deleteSelectedContacts();
     contactCache = null;
-    app.goTo().HomePage();
+    app.goTo().homePage();
   }
 
   public void create(ContactData contact, boolean creation) {
@@ -100,7 +104,7 @@ public class ContactHelper extends BaseHelper {
     fillContactForm(contact, creation);
     submitContactCreation();
     contactCache = null;
-    app.goTo().HomePage();
+    app.goTo().homePage();
   }
 
   public void modify(ContactData contact) {
@@ -108,7 +112,7 @@ public class ContactHelper extends BaseHelper {
     fillContactForm(contact, false);
     updateContactModification();
     contactCache = null;
-    app.goTo().HomePage();
+    app.goTo().homePage();
   }
 
   public boolean isThereAContact() {

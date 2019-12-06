@@ -8,7 +8,7 @@ public class NavigationHelper extends BaseHelper {
     super(app);
   }
 
-  public void HomePage() {
+  public void homePage() {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
