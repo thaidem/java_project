@@ -27,6 +27,7 @@ public class ContactsToFromGroupsTests extends TestBase {
   @Test
   public void testContactsToGroups() {
     app.goTo().homePage();
+
     Integer i = 0;
     GroupData group = app.db().groups().iterator().next();
 
@@ -35,17 +36,15 @@ public class ContactsToFromGroupsTests extends TestBase {
       System.out.println(contact);
       System.out.println(group);
       System.out.println(before);
-      if (group.getName() != before.) {
+      if (!before.stream().filter(o -> o.getName().equals(group.getName())).findFirst().isPresent()) {
 //        app.contact().addToGroup(contact, group.getName());
         System.out.println(group);
 
-      } else if (before.contains(group) && i == app.db().contacts().size()) {
+      } else if (before.stream().filter(o -> o.getName().equals(group.getName())).findFirst().isPresent() && i == app.db().contacts().size()) {
         app.contact().create(new ContactData().withFirstname("John").withLastname("Lennon"), true);
       }
       ++i;
     }
-
-
 
   }
 

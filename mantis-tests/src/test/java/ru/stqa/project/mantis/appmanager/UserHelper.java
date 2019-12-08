@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import ru.stqa.project.mantis.model.UserData;
 import ru.stqa.project.mantis.model.Users;
 
+import java.util.Iterator;
+
 public class UserHelper extends BaseHelper {
 
   public UserHelper(ApplicationManager app) {
@@ -28,8 +30,20 @@ public class UserHelper extends BaseHelper {
 
   public UserData select(Users users) {
     UserData modifiedUser;
+    Iterator<UserData> iterator = new Iterator<UserData>() {
+      @Override
+      public boolean hasNext() {
+        return false;
+      }
+
+      @Override
+      public UserData next() {
+        return null;
+      }
+    };
+
     do {
-      modifiedUser = users.iterator().next();
+      modifiedUser = iterator.next();
     } while (modifiedUser.getUsername() == "administrator");
     return modifiedUser;
   }
