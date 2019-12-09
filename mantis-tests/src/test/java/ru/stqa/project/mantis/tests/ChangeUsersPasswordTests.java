@@ -29,6 +29,7 @@ public class ChangeUsersPasswordTests extends TestBase {
     UserData modifiedUser = app.user().select(users);
     String username = modifiedUser.getUsername();
     app.user().activateChangePassword(username);
+
     List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
     String confirmationLink = findConfirmationLink(mailMessages, modifiedUser.getEmail());
     app.registration().finish(confirmationLink, password);
