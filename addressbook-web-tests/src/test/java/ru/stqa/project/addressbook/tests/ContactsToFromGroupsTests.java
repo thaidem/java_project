@@ -37,7 +37,6 @@ public class ContactsToFromGroupsTests extends TestBase {
         if (!before.stream().filter(o -> o.getName().equals(group.getName())).findFirst().isPresent()) {
           app.contact().addToGroup(contact, group.getName());
           Groups after = app.contact().newInfoAboutGroupsIntoContact(contact.getId());
-
           assertThat(after.size(), equalTo(before.size() + 1));
           assertThat(after, equalTo(before.withAdded(group)));
           break;
@@ -49,7 +48,6 @@ public class ContactsToFromGroupsTests extends TestBase {
           int newId = app.db().contacts().stream().mapToInt((c) -> c.getId()).max().getAsInt();
 
           Groups newBefore = newContact.getGroups();
-          app.goTo().homePage();
           app.contact().addToGroup(newContact.withId(newId), group.getName());
           Groups newAfter = app.contact().newInfoAboutGroupsIntoContact(contact.getId());
 
@@ -74,7 +72,6 @@ public class ContactsToFromGroupsTests extends TestBase {
         if (before.stream().filter(o -> o.getName().equals(group.getName())).findFirst().isPresent()) {
           app.contact().deleteFromGroup(contact, group.getName());
           Groups after = app.contact().newInfoAboutGroupsIntoContact(contact.getId());
-
           assertThat(after.size(), equalTo(before.size() - 1));
           assertThat(after, equalTo(before.without(group)));
           break;
@@ -82,10 +79,8 @@ public class ContactsToFromGroupsTests extends TestBase {
         } else if (!before.stream().filter(o -> o.getName().equals(group.getName())).findFirst().isPresent()
                 && i.equals(app.db().contacts().size() - 1)) {
           app.contact().addToGroup(contact, group.getName());
-          app.goTo().homePage();
           app.contact().deleteFromGroup(contact, group.getName());
           Groups after = app.contact().newInfoAboutGroupsIntoContact(contact.getId());
-
           assertThat(after, equalTo(before));
           break;
         }
