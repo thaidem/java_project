@@ -6,8 +6,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.project.addressbook.model.ContactData;
 import ru.stqa.project.addressbook.model.Contacts;
+import ru.stqa.project.addressbook.model.Groups;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends BaseHelper {
 
@@ -155,5 +158,45 @@ public class ContactHelper extends BaseHelper {
     if (contact.getEmail()== null) {contact.withEmail("");}
     if (contact.getEmail2()== null) {contact.withEmail2("");}
     if (contact.getEmail3()== null) {contact.withEmail3("");}
+  }
+
+  public void addToGroup(ContactData contact, String nameGroup) {
+    app.goTo().homePage();
+    visibleAllGroups();
+    selectContactById(contact.getId());
+    initContactToGroup(nameGroup);
+  }
+  
+  public void deleteFromGroup(ContactData contact, String nameGroup) {
+    app.goTo().homePage();
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(nameGroup);
+    selectContactById(contact.getId());
+    initContactFromGroup(nameGroup);
+  }
+
+  private void initContactFromGroup(String nameGroup) {
+    click(By.xpath(String.format("//input[@value='Remove from \"%s\"']", nameGroup)));
+  }
+
+  public void initContactToGroup(String nameGroup) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(nameGroup);
+    click(By.name("add"));
+  }
+
+  public void visibleAllGroups() {
+//    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+  }
+
+  public Groups newInfoAboutGroupsIntoContact(int id) {
+    ArrayList<ContactData> contacts = new ArrayList<ContactData>(app.db().contacts());
+    Groups after = null;
+    for (ContactData update : contacts) {
+      if (update.getId() == id) {
+        after = update.getGroups();
+        break;
+      }
+    }
+    return after;
   }
 }
