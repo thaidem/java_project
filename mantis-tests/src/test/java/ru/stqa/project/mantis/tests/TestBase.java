@@ -30,7 +30,7 @@ public class TestBase {
   boolean isIssueOpen(int issueId) throws MalformedURLException, RemoteException, ServiceException {
     MantisConnectPortType mc = new MantisConnectLocator().getMantisConnectPort(new URL(app.getProperty("web.soapUrl")));
     IssueData issue = mc.mc_issue_get
-            (app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId));
+            (app.getProperty("web.adminLogin"), app.getProperty("web.adminPass"), BigInteger.valueOf(issueId));
     return !issue.getStatus().getName().equals("resolved");
   }
 
