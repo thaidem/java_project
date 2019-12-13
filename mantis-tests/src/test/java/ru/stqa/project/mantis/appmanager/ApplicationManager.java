@@ -50,21 +50,6 @@ public class ApplicationManager {
     return properties.getProperty(key);
   }
 
-  public RegistrationHelper registration() {
-    if (registrationHelper == null) {
-      registrationHelper =  new RegistrationHelper(this);
-    }
-    return registrationHelper;
-  }
-
-  public FtpHelper ftp() {
-    if (ftp == null) {
-      ftp = new FtpHelper(this);
-    }
-    return ftp;
-  }
-
-
   public WebDriver getDriver() {
     if (wd == null) {
       if (browser.equals(BrowserType.FIREFOX)) {
@@ -80,6 +65,19 @@ public class ApplicationManager {
     return wd;
   }
 
+  public RegistrationHelper registration() {
+    if (registrationHelper == null) {
+      registrationHelper =  new RegistrationHelper(this);
+    }
+    return registrationHelper;
+  }
+
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+    return ftp;
+  }
   public MailHelper mail() {
     if (mailHelper == null) {
       mailHelper = new MailHelper(this);
