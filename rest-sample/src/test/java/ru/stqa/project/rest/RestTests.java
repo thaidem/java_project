@@ -14,7 +14,14 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestTests {
+public class RestTests extends TestBase {
+
+  @Test
+  public void test() throws IOException {
+    int issueId = 3;
+    skipIfNotFixed(issueId);
+    System.out.println("Test continues");
+  }
 
   @Test
   public void testCreateIssue() throws IOException {
