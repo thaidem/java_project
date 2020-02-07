@@ -27,7 +27,7 @@ public class IlsTests extends TestBase {
     Thread.sleep(10000);
     plan = app.wd.findElement(By.id("TGCell-0-P10948-Name_"));
     action.contextClick(plan).perform();
-    app.wd.findElement(By.xpath("//*[.='Изменить название']")).click();
+    app.wd.findElement(By.xpath("//*[.='РР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ']")).click();
 
     WebElement editPlan = app.wd.findElement(By.id("TGInput-0"));
     String oldPlan = editPlan.getAttribute("value");

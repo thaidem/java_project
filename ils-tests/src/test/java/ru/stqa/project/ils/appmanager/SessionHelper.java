@@ -11,7 +11,7 @@ public class SessionHelper extends BaseHelper {
   public void login(String username, String password) {
     type(By.name("l"), username);
     type(By.name("p"), password);
-//    wd.findElement(By.xpath("//input[@value='Войти']")).click();
-    click(By.xpath("//input[@value='Войти']"));
+
+    click(By.xpath("//input[@value='Р’РѕР№С‚Рё']"));
   }
 }
